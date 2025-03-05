@@ -6,7 +6,7 @@
       "prefix": "clab",
       "mgmt": {
         "network": "clab",
-        "bridge": "br-6867161c61c8",
+        "bridge": "br-2470cd0c75b4",
         "ipv4-subnet": "172.20.20.0/24",
         "ipv4-gw": "172.20.20.1",
         "ipv6-subnet": "3fff:172:20:20::/64",
@@ -29,13 +29,13 @@
       "image": "vrnetlab/nokia_sros:24.10.R2",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-address": "172.20.20.8",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_sros",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/agg1",
@@ -72,13 +72,13 @@
       "image": "vrnetlab/nokia_sros:24.10.R2",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-address": "172.20.20.3",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_sros",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/agg2",
@@ -115,19 +115,19 @@
       "image": "vrnetlab/nokia_sros:24.10.R2",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-address": "172.20.20.5",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_sros",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/bng1",
         "clab-node-longname": "clab-bng-relay-ipv4-ipv6-bng1",
         "clab-node-name": "bng1",
-        "clab-node-type": "sr-1",
+        "clab-node-type": "cpu=2 ram=4 slot=A chassis=sr-1 card=iom-1 mda/1=me6-100gb-qsfp28",
         "clab-owner": "miguel",
         "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
         "containerlab": "bng-relay-ipv4-ipv6"
@@ -158,13 +158,13 @@
       "image": "vrnetlab/nokia_sros:24.10.R2",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-address": "172.20.20.2",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_sros",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/bng2",
@@ -201,13 +201,13 @@
       "image": "vrnetlab/nokia_sros:24.10.R2",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.8",
+      "mgmt-ipv4-address": "172.20.20.6",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_sros",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/dhcp-server",
@@ -244,13 +244,13 @@
       "image": "fmiguelalberto/ubuntu-miguel4:latest",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-address": "172.20.20.4",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/host1",
@@ -287,13 +287,13 @@
       "image": "fmiguelalberto/ubuntu-miguel4:latest",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.10",
+      "mgmt-ipv4-address": "172.20.20.9",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/host2",
@@ -330,13 +330,13 @@
       "image": "vrnetlab/nokia_sros:24.10.R2",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-address": "172.20.20.10",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_sros",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/olt1",
@@ -373,13 +373,13 @@
       "image": "vrnetlab/nokia_sros:24.10.R2",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.9",
+      "mgmt-ipv4-address": "172.20.20.7",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-mgmt-net-bridge": "br-2470cd0c75b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_sros",
         "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/olt2",
@@ -411,13 +411,13 @@
       "a": {
         "node": "bng1",
         "interface": "eth2",
-        "mac": "aa:c1:ab:10:73:09",
+        "mac": "aa:c1:ab:aa:04:15",
         "peer": "z"
       },
       "z": {
         "node": "bng2",
         "interface": "eth2",
-        "mac": "aa:c1:ab:05:50:49",
+        "mac": "aa:c1:ab:f0:29:80",
         "peer": "a"
       }
     },
@@ -425,13 +425,13 @@
       "a": {
         "node": "bng1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:c9:1a:38",
+        "mac": "aa:c1:ab:14:25:1c",
         "peer": "z"
       },
       "z": {
         "node": "agg1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:06:88:d7",
+        "mac": "aa:c1:ab:15:3a:4a",
         "peer": "a"
       }
     },
@@ -439,13 +439,13 @@
       "a": {
         "node": "bng2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:5e:e8:ce",
+        "mac": "aa:c1:ab:78:65:56",
         "peer": "z"
       },
       "z": {
         "node": "agg2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:46:15:ed",
+        "mac": "aa:c1:ab:41:86:c1",
         "peer": "a"
       }
     },
@@ -453,13 +453,13 @@
       "a": {
         "node": "agg1",
         "interface": "eth3",
-        "mac": "aa:c1:ab:f2:55:94",
+        "mac": "aa:c1:ab:4c:a7:ae",
         "peer": "z"
       },
       "z": {
         "node": "olt1",
         "interface": "eth3",
-        "mac": "aa:c1:ab:5a:f8:0e",
+        "mac": "aa:c1:ab:ef:36:53",
         "peer": "a"
       }
     },
@@ -467,13 +467,13 @@
       "a": {
         "node": "agg1",
         "interface": "eth2",
-        "mac": "aa:c1:ab:84:96:63",
+        "mac": "aa:c1:ab:c6:5d:76",
         "peer": "z"
       },
       "z": {
         "node": "agg2",
         "interface": "eth2",
-        "mac": "aa:c1:ab:42:65:a4",
+        "mac": "aa:c1:ab:5d:7a:57",
         "peer": "a"
       }
     },
@@ -481,13 +481,13 @@
       "a": {
         "node": "agg2",
         "interface": "eth3",
-        "mac": "aa:c1:ab:b4:6c:33",
+        "mac": "aa:c1:ab:b5:28:20",
         "peer": "z"
       },
       "z": {
         "node": "olt2",
         "interface": "eth3",
-        "mac": "aa:c1:ab:e1:6f:99",
+        "mac": "aa:c1:ab:36:bf:ed",
         "peer": "a"
       }
     },
@@ -495,13 +495,13 @@
       "a": {
         "node": "olt1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:e2:5d:0e",
+        "mac": "aa:c1:ab:98:87:0f",
         "peer": "z"
       },
       "z": {
         "node": "host1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:53:96:9e",
+        "mac": "aa:c1:ab:99:3f:37",
         "peer": "a"
       }
     },
@@ -509,13 +509,13 @@
       "a": {
         "node": "olt1",
         "interface": "eth2",
-        "mac": "aa:c1:ab:73:fa:19",
+        "mac": "aa:c1:ab:0c:ce:87",
         "peer": "z"
       },
       "z": {
         "node": "olt2",
         "interface": "eth2",
-        "mac": "aa:c1:ab:65:02:21",
+        "mac": "aa:c1:ab:dc:f3:99",
         "peer": "a"
       }
     },
@@ -523,13 +523,13 @@
       "a": {
         "node": "olt2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:67:60:fb",
+        "mac": "aa:c1:ab:84:9a:70",
         "peer": "z"
       },
       "z": {
         "node": "host2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:8c:46:24",
+        "mac": "aa:c1:ab:5f:c9:fc",
         "peer": "a"
       }
     },
@@ -537,13 +537,13 @@
       "a": {
         "node": "bng1",
         "interface": "eth3",
-        "mac": "aa:c1:ab:88:2b:46",
+        "mac": "aa:c1:ab:33:78:22",
         "peer": "z"
       },
       "z": {
         "node": "dhcp-server",
         "interface": "eth1",
-        "mac": "aa:c1:ab:99:27:c5",
+        "mac": "aa:c1:ab:18:37:c8",
         "peer": "a"
       }
     },
@@ -551,13 +551,13 @@
       "a": {
         "node": "bng2",
         "interface": "eth3",
-        "mac": "aa:c1:ab:64:09:e7",
+        "mac": "aa:c1:ab:84:2d:a0",
         "peer": "z"
       },
       "z": {
         "node": "dhcp-server",
         "interface": "eth2",
-        "mac": "aa:c1:ab:71:0e:bf",
+        "mac": "aa:c1:ab:63:ed:ff",
         "peer": "a"
       }
     }

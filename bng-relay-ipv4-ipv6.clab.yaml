@@ -23,7 +23,7 @@ topology:
         - 50701:22
     bng1: # SR-1
       kind: nokia_sros
-      type: sr-1
+      type: cpu=2 ram=4 slot=A chassis=sr-1 card=iom-1 mda/1=me6-100gb-qsfp28 
       startup-config: ./config/bng1.cfg
       ports:
         - 50101:22
