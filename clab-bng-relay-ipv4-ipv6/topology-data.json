@@ -1,0 +1,565 @@
+{
+  "name": "bng-relay-ipv4-ipv6",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-6867161c61c8",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "agg1": {
+      "index": "0",
+      "shortname": "agg1",
+      "longname": "clab-bng-relay-ipv4-ipv6-agg1",
+      "fqdn": "agg1.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/agg1",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/agg1",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-agg1",
+        "clab-node-name": "agg1",
+        "clab-node-type": "cp: cpu=2 ram=3 slot=A chassis=IXR-X card=imm32-qsfp28+4-qsfpdd ___  lc: cpu=2 ram=4 max_nics=36 slot=1 chassis=IXR-X card=imm32-qsfp28+4-qsfpdd mda/1=m32-qsfp28+4-qsfpdd",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 50301,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 50301,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "agg2": {
+      "index": "1",
+      "shortname": "agg2",
+      "longname": "clab-bng-relay-ipv4-ipv6-agg2",
+      "fqdn": "agg2.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/agg2",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/agg2",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-agg2",
+        "clab-node-name": "agg2",
+        "clab-node-type": "cp: cpu=2 ram=3 slot=A chassis=IXR-X card=imm32-qsfp28+4-qsfpdd ___  lc: cpu=2 ram=4 max_nics=36 slot=1 chassis=IXR-X card=imm32-qsfp28+4-qsfpdd mda/1=m32-qsfp28+4-qsfpdd",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 50401,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 50401,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "bng1": {
+      "index": "2",
+      "shortname": "bng1",
+      "longname": "clab-bng-relay-ipv4-ipv6-bng1",
+      "fqdn": "bng1.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/bng1",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/bng1",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-bng1",
+        "clab-node-name": "bng1",
+        "clab-node-type": "sr-1",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 50101,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 50101,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "bng2": {
+      "index": "3",
+      "shortname": "bng2",
+      "longname": "clab-bng-relay-ipv4-ipv6-bng2",
+      "fqdn": "bng2.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/bng2",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/bng2",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-bng2",
+        "clab-node-name": "bng2",
+        "clab-node-type": "sr-1",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 50201,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 50201,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "dhcp-server": {
+      "index": "4",
+      "shortname": "dhcp-server",
+      "longname": "clab-bng-relay-ipv4-ipv6-dhcp-server",
+      "fqdn": "dhcp-server.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/dhcp-server",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.8",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/dhcp-server",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-dhcp-server",
+        "clab-node-name": "dhcp-server",
+        "clab-node-type": "sr-1",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 50701,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 50701,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "host1": {
+      "index": "5",
+      "shortname": "host1",
+      "longname": "clab-bng-relay-ipv4-ipv6-host1",
+      "fqdn": "host1.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/host1",
+      "kind": "linux",
+      "image": "fmiguelalberto/ubuntu-miguel4:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/host1",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-host1",
+        "clab-node-name": "host1",
+        "clab-node-type": "",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 51101,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 51101,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "host2": {
+      "index": "6",
+      "shortname": "host2",
+      "longname": "clab-bng-relay-ipv4-ipv6-host2",
+      "fqdn": "host2.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/host2",
+      "kind": "linux",
+      "image": "fmiguelalberto/ubuntu-miguel4:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.10",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/host2",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-host2",
+        "clab-node-name": "host2",
+        "clab-node-type": "",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 51201,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 51201,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "olt1": {
+      "index": "7",
+      "shortname": "olt1",
+      "longname": "clab-bng-relay-ipv4-ipv6-olt1",
+      "fqdn": "olt1.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/olt1",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/olt1",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-olt1",
+        "clab-node-name": "olt1",
+        "clab-node-type": "sr-1",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 50501,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 50501,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "olt2": {
+      "index": "8",
+      "shortname": "olt2",
+      "longname": "clab-bng-relay-ipv4-ipv6-olt2",
+      "fqdn": "olt2.bng-relay-ipv4-ipv6.io",
+      "group": "",
+      "labdir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/olt2",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.9",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6867161c61c8",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/home/miguel/clab/bng-relay-ipv4-ipv6/clab-bng-relay-ipv4-ipv6/olt2",
+        "clab-node-longname": "clab-bng-relay-ipv4-ipv6-olt2",
+        "clab-node-name": "olt2",
+        "clab-node-type": "sr-1",
+        "clab-owner": "miguel",
+        "clab-topo-file": "/home/miguel/clab/bng-relay-ipv4-ipv6/bng-relay-ipv4-ipv6.clab.yaml",
+        "containerlab": "bng-relay-ipv4-ipv6"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 50601,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 50601,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "bng1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:10:73:09",
+        "peer": "z"
+      },
+      "z": {
+        "node": "bng2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:05:50:49",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "bng1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:c9:1a:38",
+        "peer": "z"
+      },
+      "z": {
+        "node": "agg1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:06:88:d7",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "bng2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:5e:e8:ce",
+        "peer": "z"
+      },
+      "z": {
+        "node": "agg2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:46:15:ed",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "agg1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:f2:55:94",
+        "peer": "z"
+      },
+      "z": {
+        "node": "olt1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:5a:f8:0e",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "agg1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:84:96:63",
+        "peer": "z"
+      },
+      "z": {
+        "node": "agg2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:42:65:a4",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "agg2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:b4:6c:33",
+        "peer": "z"
+      },
+      "z": {
+        "node": "olt2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:e1:6f:99",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "olt1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:e2:5d:0e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:53:96:9e",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "olt1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:73:fa:19",
+        "peer": "z"
+      },
+      "z": {
+        "node": "olt2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:65:02:21",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "olt2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:67:60:fb",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:8c:46:24",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "bng1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:88:2b:46",
+        "peer": "z"
+      },
+      "z": {
+        "node": "dhcp-server",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:99:27:c5",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "bng2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:64:09:e7",
+        "peer": "z"
+      },
+      "z": {
+        "node": "dhcp-server",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:71:0e:bf",
+        "peer": "a"
+      }
+    }
+  ]
+}
