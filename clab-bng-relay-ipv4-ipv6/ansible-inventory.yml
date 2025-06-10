@@ -7,12 +7,16 @@ all:
   children:
     linux:
       hosts:
+        clab-bng-relay-ipv4-ipv6-bngblast:
+          ansible_host: 172.20.20.8
         clab-bng-relay-ipv4-ipv6-gnmic:
-          ansible_host: 172.20.20.6
+          ansible_host: 172.20.20.14
         clab-bng-relay-ipv4-ipv6-host1:
-          ansible_host: 172.20.20.7
+          ansible_host: 172.20.20.11
         clab-bng-relay-ipv4-ipv6-host2:
-          ansible_host: 172.20.20.2
+          ansible_host: 172.20.20.12
+        clab-bng-relay-ipv4-ipv6-sub1:
+          ansible_host: 172.20.20.9
     nokia_sros:
       vars:
         ansible_network_os: nokia.sros.md
@@ -23,20 +27,20 @@ all:
         ansible_password: admin
       hosts:
         clab-bng-relay-ipv4-ipv6-agg1:
-          ansible_host: 172.20.20.10
+          ansible_host: 172.20.20.6
         clab-bng-relay-ipv4-ipv6-agg2:
-          ansible_host: 172.20.20.11
+          ansible_host: 172.20.20.5
         clab-bng-relay-ipv4-ipv6-bng1:
           ansible_host: 172.20.20.4
         clab-bng-relay-ipv4-ipv6-bng2:
-          ansible_host: 172.20.20.12
+          ansible_host: 172.20.20.10
         clab-bng-relay-ipv4-ipv6-dhcp-server:
-          ansible_host: 172.20.20.3
+          ansible_host: 172.20.20.7
         clab-bng-relay-ipv4-ipv6-olt1:
-          ansible_host: 172.20.20.5
+          ansible_host: 172.20.20.13
         clab-bng-relay-ipv4-ipv6-olt2:
-          ansible_host: 172.20.20.9
+          ansible_host: 172.20.20.2
     openwrt:
       hosts:
         clab-bng-relay-ipv4-ipv6-cpe:
-          ansible_host: 172.20.20.8
+          ansible_host: 172.20.20.3

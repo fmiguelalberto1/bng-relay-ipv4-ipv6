@@ -11,17 +11,19 @@ topology:
     nokia_sros:
       image: vrnetlab/nokia_sros:24.10.R2
       license: ../license-sros-24.txt
-    linux:
-      image: fmiguelalberto/ubuntu-miguel5:latest
+    #    linux:
+    #      image: fmiguelalberto/ubuntu-miguel6:latest
     openwrt:
       image: vrnetlab/openwrt_openwrt:24.10.1
       env:
-        USERNAME: root                                    # default: root
-        PASSWORD: mypassword                              # default: VR-netlab9
-        CLAB_MGMT_PASSTHROUGH: "false"                    # default: "false"
-        PACKET_REPOSITORY_DNS_SERVER: 8.8.8.8             # default 8.8.8.8
-        PACKET_REPOSITORY_DOMAINS: "example.com"          # additional repository domains (space-separated); creates a host route via the MGMT interface
+        USERNAME: root # default: root
+        PASSWORD: mypassword # default: VR-netlab9
+        CLAB_MGMT_PASSTHROUGH: "false" # default: "false"
+        PACKET_REPOSITORY_DNS_SERVER: 8.8.8.8 # default 8.8.8.8
+        PACKET_REPOSITORY_DOMAINS: "example.com" # additional repository domains (space-separated); creates a host route via the MGMT interface
         PACKAGES: "tinc htop tcpdump btop luci-proto-gre"
+    linux:
+      image: fmiguelalberto/bngblaster:latest
   nodes:
     dhcp-server:
       #sr-1
@@ -31,8 +33,8 @@ topology:
       ports:
         - 50701:22
       labels:
-        graph-posX: "665"
-        graph-posY: "95"
+        graph-posX: "835"
+        graph-posY: "205"
         graph-groupLabelPos: bottom-center
     bng1:
       # SR-1
@@ -42,8 +44,8 @@ topology:
       ports:
         - 50101:22
       labels:
-        graph-posX: "545"
-        graph-posY: "45"
+        graph-posX: "735"
+        graph-posY: "155"
         graph-groupLabelPos: bottom-center
     bng2:
       # SR-1
@@ -53,8 +55,8 @@ topology:
       ports:
         - 50201:22
       labels:
-        graph-posX: "545"
-        graph-posY: "145"
+        graph-posX: "735"
+        graph-posY: "215"
         graph-groupLabelPos: bottom-center
     agg1:
       # IXR-X1
@@ -67,8 +69,8 @@ topology:
       ports:
         - 50301:22
       labels:
-        graph-posX: "435"
-        graph-posY: "45"
+        graph-posX: "615"
+        graph-posY: "155"
         graph-groupLabelPos: bottom-center
     agg2:
       # IXR-X1
@@ -81,8 +83,8 @@ topology:
       ports:
         - 50401:22
       labels:
-        graph-posX: "435"
-        graph-posY: "145"
+        graph-posX: "615"
+        graph-posY: "215"
         graph-groupLabelPos: bottom-center
     olt1:
       # SR-1
@@ -92,8 +94,8 @@ topology:
       ports:
         - 50501:22
       labels:
-        graph-posX: "355"
-        graph-posY: "45"
+        graph-posX: "485"
+        graph-posY: "165"
         graph-groupLabelPos: bottom-center
     olt2:
       # SR-1
@@ -103,25 +105,42 @@ topology:
       ports:
         - 50601:22
       labels:
-        graph-posX: "355"
-        graph-posY: "145"
+        graph-posX: "485"
+        graph-posY: "215"
         graph-groupLabelPos: bottom-center
     cpe:
       kind: openwrt
       ports:
         - 8080:80
         - 8443:443
+      env:
+        USERNAME: root # default: root
+        PASSWORD: mypassword # default: VR-netlab9
+        CLAB_MGMT_PASSTHROUGH: "false" # default: "false"
+        PACKET_REPOSITORY_DNS_SERVER: 8.8.8.8 # default 8.8.8.8
+        PACKET_REPOSITORY_DOMAINS: "example.com" # additional repository domains (space-separated); creates a host route via the MGMT interface
+        PACKAGES: "tinc htop tcpdump btop luci-proto-gre" # installed on boot if not already present
+      labels:
+        graph-posX: "365"
+        graph-posY: "165"
+        graph-groupLabelPos: bottom-center
+    sub1:
+      kind: linux
+      labels:
+        graph-posX: "235"
+        graph-posY: "165"
+        graph-groupLabelPos: bottom-center
     host1:
       kind: linux
       ports:
         - 51101:22
-#      interfaces:
- #       - name: "eth0"
-  #      - name: "eth1"
-   #     - name: "eth2"
+      #      interfaces:
+      #       - name: "eth0"
+      #      - name: "eth1"
+      #     - name: "eth2"
       labels:
-        graph-posX: "295"
-        graph-posY: "45"
+        graph-posX: "275"
+        graph-posY: "195"
         graph-groupLabelPos: bottom-center
     #      exec:
     #        - ip route delete default
@@ -133,14 +152,20 @@ topology:
       ports:
         - 51201:22
       labels:
-        graph-posX: "295"
-        graph-posY: "145"
+        graph-posX: "235"
+        graph-posY: "215"
         graph-groupLabelPos: bottom-center
     #      exec:
     #        - ip route delete default
     #        - ifconfig eth1 hw ether 02:42:ac:11:01:02
     #        - echo "ping to server"
     #        - ping 100.65.0.1
+    bngblast:
+      kind: linux
+      labels:
+        graph-posX: "365"
+        graph-posY: "195"
+        graph-groupLabelPos: bottom-center
     gnmic:
       kind: linux
       ports:
@@ -148,8 +173,8 @@ topology:
       exec:
         - ip addr add 10.1.8.8/24 dev eth1
       labels:
-        graph-posX: "645"
-        graph-posY: "45"
+        graph-posX: "845"
+        graph-posY: "165"
         graph-groupLabelPos: bottom-center
   links:
     - endpoints: [ "bng1:eth2", "bng2:eth2" ]
@@ -158,10 +183,12 @@ topology:
     - endpoints: [ "agg1:eth3", "olt1:eth3" ]
     - endpoints: [ "agg1:eth2", "agg2:eth2" ]
     - endpoints: [ "agg2:eth3", "olt2:eth3" ]
-    - endpoints: [ "cpe:eth2", "host1:eth1" ]
+    - endpoints: [ "host1:eth1", "olt1:eth1" ]
     - endpoints: [ "olt1:eth2", "olt2:eth2" ]
     - endpoints: [ "olt2:eth1", "host2:eth1" ]
     - endpoints: [ "bng1:eth3", "dhcp-server:eth1" ]
     - endpoints: [ "bng2:eth3", "dhcp-server:eth2" ]
     - endpoints: [ "bng1:eth5", "gnmic:eth1" ]
-    - endpoints: ["olt1:eth1","cpe:eth1"]
+    - endpoints: [ "olt1:eth4", "cpe:eth1" ]
+    - endpoints: [ "cpe:eth2", "sub1:eth1" ]
+    - endpoints: [ "olt1:eth5", "bngblast:eth1" ]

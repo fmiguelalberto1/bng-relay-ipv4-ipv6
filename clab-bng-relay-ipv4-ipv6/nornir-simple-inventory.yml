@@ -1,29 +1,39 @@
 ---
+bngblast:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.8
 gnmic:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.6
+    hostname: 172.20.20.14
 host1:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.7
+    hostname: 172.20.20.11
 host2:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.2
+    hostname: 172.20.20.12
+sub1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.9
 agg1:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.10
+    hostname: 172.20.20.6
 agg2:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.11
+    hostname: 172.20.20.5
 bng1:
     username: admin
     password: admin
@@ -33,24 +43,24 @@ bng2:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.12
+    hostname: 172.20.20.10
 dhcp-server:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.3
+    hostname: 172.20.20.7
 olt1:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.5
+    hostname: 172.20.20.13
 olt2:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.9
+    hostname: 172.20.20.2
 cpe:
     username: 
     password: 
     platform: openwrt
-    hostname: 172.20.20.8
+    hostname: 172.20.20.3

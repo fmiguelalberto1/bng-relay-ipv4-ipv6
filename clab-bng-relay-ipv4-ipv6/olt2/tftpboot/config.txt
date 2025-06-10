@@ -3,479 +3,425 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated 2025-05-16T16:50:43.6Z by admin from 200::
-# Commit ID 1
-#   Committed 2025-05-16T14:23:25.4Z by system (MD-CLI) from Console
-#   Log       "System booted version B-24.10.R2."
+# Generated MON JUN 09 21:12:56 2025 UTC
 
-configure {
-    card 1 {
-        card-type iom-1
-        mda 1 {
-            mda-type me12-100gb-qsfp28
-        }
-    }
-    log {
-        filter "1001" {
-            named-entry "10" {
-                description "Collect only events of major severity or higher"
-                action forward
-                match {
-                    severity {
-                        gte major
-                    }
-                }
-            }
-        }
-        log-id "99" {
-            description "Default  Log"
-            source {
-                main true
-            }
-            destination {
-                memory {
-                    max-entries 500
-                }
-            }
-        }
-        log-id "100" {
-            description "Default Serious Errors Log"
-            filter "1001"
-            source {
-                main true
-            }
-            destination {
-                memory {
-                    max-entries 500
-                }
-            }
-        }
-    }
-    port 1/1/c1 {
-        admin-state enable
-        connector {
-            breakout c1-100g
-        }
-    }
-    port 1/1/c1/1 {
-        admin-state enable
-        ethernet {
-            mode hybrid
-        }
-    }
-    port 1/1/c2 {
-        admin-state enable
-        connector {
-            breakout c1-100g
-        }
-    }
-    port 1/1/c2/1 {
-        admin-state enable
-        ethernet {
-            mode hybrid
-        }
-    }
-    port 1/1/c3 {
-        admin-state enable
-        connector {
-            breakout c1-100g
-        }
-    }
-    port 1/1/c3/1 {
-        admin-state enable
-        ethernet {
-            mode hybrid
-        }
-    }
-    port 1/1/c4 {
-        admin-state enable
-        connector {
-            breakout c1-100g
-        }
-    }
-    port 1/1/c4/1 {
-        admin-state enable
-        ethernet {
-            mode hybrid
-        }
-    }
-    port 1/1/c5 {
-        admin-state enable
-        connector {
-            breakout c1-100g
-        }
-    }
-    port 1/1/c5/1 {
-        admin-state enable
-        ethernet {
-            mode hybrid
-        }
-    }
-    port 1/1/c6 {
-        admin-state enable
-        connector {
-            breakout c1-100g
-        }
-    }
-    port 1/1/c6/1 {
-        admin-state enable
-        ethernet {
-            mode hybrid
-        }
-    }
-    router "Base" {
-        interface "system" {
-            ipv4 {
-                primary {
-                    address 10.10.10.6
-                    prefix-length 32
-                }
-            }
-        }
-        interface "to-agg2" {
-            port 1/1/c3/1:46
-            ipv4 {
-                primary {
-                    address 10.4.6.6
-                    prefix-length 24
-                }
-            }
-        }
-        interface "to-olt1" {
-            port 1/1/c2/1:56
-            ipv4 {
-                primary {
-                    address 10.5.6.6
-                    prefix-length 24
-                }
-            }
-        }
-        ldp {
-            admin-state enable
-            interface-parameters {
-                interface "to-agg2" {
-                    ipv4 {
-                        admin-state enable
-                    }
-                }
-                interface "to-olt1" {
-                    ipv4 {
-                        admin-state enable
-                    }
-                }
-            }
-        }
-        ospf 0 {
-            admin-state enable
-            area 0.0.0.0 {
-                interface "system" {
-                }
-                interface "to-agg2" {
-                }
-                interface "to-olt1" {
-                }
-            }
-        }
-    }
-    service {
-        vpls "20" {
-            admin-state enable
-            customer "1"
-            sap 1/1/c1/1:0 {
-            }
-            sap 1/1/c3/1:20 {
-            }
-        }
-    }
-    system {
+exit all
+configure
+#--------------------------------------------------
+echo "System Configuration"
+#--------------------------------------------------
+    system
         name "olt2"
-        grpc {
-            admin-state enable
-            allow-unsecure-connection
-            gnmi {
-                auto-config-save true
-            }
-            rib-api {
-                admin-state enable
-            }
-        }
-        management-interface {
-            configuration-save {
-                configuration-backups 5
-                incremental-saves false
-            }
-            netconf {
-                auto-config-save true
-                listen {
-                    admin-state enable
-                }
-            }
-            snmp {
-                packet-size 9216
-                streaming {
-                    admin-state enable
-                }
-            }
-        }
-        bluetooth {
-            advertising-timeout 30
-        }
-        login-control {
-            ssh {
+        config-backup 5
+        dns
+            address-pref ipv6-first
+        exit
+        netconf
+            listen
+                no shutdown
+            exit
+        exit
+        snmp
+            streaming
+                no shutdown
+            exit
+            packet-size 9216
+        exit
+        time
+            sntp
+                shutdown
+            exit
+            zone UTC
+        exit
+        bluetooth
+            module A
+            exit
+            power off
+        exit
+    exit
+#--------------------------------------------------
+echo "System Security Configuration"
+#--------------------------------------------------
+    system
+        security
+            profile "administrative"
+                netconf
+                    base-op-authorization
+                        action
+                        cancel-commit
+                        close-session
+                        commit
+                        copy-config
+                        create-subscription
+                        delete-config
+                        discard-changes
+                        edit-config
+                        get
+                        get-config
+                        get-data
+                        get-schema
+                        kill-session
+                        lock
+                        validate
+                    exit
+                exit
+                entry 10
+                    match "configure system security"
+                    action permit
+                exit
+                entry 20
+                    match "show system security"
+                    action permit
+                exit
+                entry 30
+                    match "tools perform security"
+                    action permit
+                exit
+                entry 40
+                    match "tools dump security"
+                    action permit
+                exit
+                entry 42
+                    match "tools dump system security"
+                    action permit
+                exit
+                entry 50
+                    match "admin system security"
+                    action permit
+                exit
+                entry 100
+                    match "configure li"
+                    action deny
+                exit
+                entry 110
+                    match "show li"
+                    action deny
+                exit
+                entry 111
+                    match "clear li"
+                    action deny
+                exit
+                entry 112
+                    match "tools dump li"
+                    action deny
+                exit
+            exit
+            user "admin"
+                password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+                access console ftp netconf grpc
+                no restricted-to-home
+                console
+                    member "administrative"
+                exit
+            exit
+            snmp
+                community "76HzdddhlPpRo1Vql+ZB5spLqccgYQ==" hash2 r version v2c
+            exit
+            per-peer-queuing
+            telnet
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Login Control Configuration"
+#--------------------------------------------------
+    system
+        login-control
+            ssh
                 inbound-max-sessions 30
-            }
-        }
-        security {
-            aaa {
-                local-profiles {
-                    profile "administrative" {
-                        default-action permit-all
-                        entry 10 {
-                            match "configure system security"
-                            action permit
-                        }
-                        entry 20 {
-                            match "show system security"
-                            action permit
-                        }
-                        entry 30 {
-                            match "tools perform security"
-                            action permit
-                        }
-                        entry 40 {
-                            match "tools dump security"
-                            action permit
-                        }
-                        entry 42 {
-                            match "tools dump system security"
-                            action permit
-                        }
-                        entry 50 {
-                            match "admin system security"
-                            action permit
-                        }
-                        entry 100 {
-                            match "configure li"
-                            action deny
-                        }
-                        entry 110 {
-                            match "show li"
-                            action deny
-                        }
-                        entry 111 {
-                            match "clear li"
-                            action deny
-                        }
-                        entry 112 {
-                            match "tools dump li"
-                            action deny
-                        }
-                        netconf {
-                            base-op-authorization {
-                                action true
-                                cancel-commit true
-                                close-session true
-                                commit true
-                                copy-config true
-                                create-subscription true
-                                delete-config true
-                                discard-changes true
-                                edit-config true
-                                get true
-                                get-config true
-                                get-data true
-                                get-schema true
-                                kill-session true
-                                lock true
-                                validate true
-                            }
-                        }
-                    }
-                    profile "default" {
-                        entry 10 {
-                            match "exec"
-                            action permit
-                        }
-                        entry 20 {
-                            match "exit"
-                            action permit
-                        }
-                        entry 30 {
-                            match "help"
-                            action permit
-                        }
-                        entry 40 {
-                            match "logout"
-                            action permit
-                        }
-                        entry 50 {
-                            match "password"
-                            action permit
-                        }
-                        entry 60 {
-                            match "show config"
-                            action deny
-                        }
-                        entry 65 {
-                            match "show li"
-                            action deny
-                        }
-                        entry 66 {
-                            match "clear li"
-                            action deny
-                        }
-                        entry 67 {
-                            match "tools dump li"
-                            action deny
-                        }
-                        entry 68 {
-                            match "state li"
-                            action deny
-                        }
-                        entry 70 {
-                            match "show"
-                            action permit
-                        }
-                        entry 75 {
-                            match "state"
-                            action permit
-                        }
-                        entry 80 {
-                            match "enable-admin"
-                            action permit
-                        }
-                        entry 90 {
-                            match "enable"
-                            action permit
-                        }
-                        entry 100 {
-                            match "configure li"
-                            action deny
-                        }
-                    }
-                }
-            }
-            snmp {
-                community "76HzdddhlPpRo1Vql+ZB5spLqccgYQ== hash2" {
-                    access-permissions r
-                    version v2c
-                }
-            }
-            ssh {
-                server-cipher-list-v2 {
-                    cipher 190 {
-                        name aes256-ctr
-                    }
-                    cipher 192 {
-                        name aes192-ctr
-                    }
-                    cipher 194 {
-                        name aes128-ctr
-                    }
-                    cipher 200 {
-                        name aes128-cbc
-                    }
-                    cipher 205 {
-                        name 3des-cbc
-                    }
-                    cipher 225 {
-                        name aes192-cbc
-                    }
-                    cipher 230 {
-                        name aes256-cbc
-                    }
-                }
-                client-cipher-list-v2 {
-                    cipher 190 {
-                        name aes256-ctr
-                    }
-                    cipher 192 {
-                        name aes192-ctr
-                    }
-                    cipher 194 {
-                        name aes128-ctr
-                    }
-                    cipher 200 {
-                        name aes128-cbc
-                    }
-                    cipher 205 {
-                        name 3des-cbc
-                    }
-                    cipher 225 {
-                        name aes192-cbc
-                    }
-                    cipher 230 {
-                        name aes256-cbc
-                    }
-                }
-                server-mac-list-v2 {
-                    mac 200 {
-                        name hmac-sha2-512
-                    }
-                    mac 210 {
-                        name hmac-sha2-256
-                    }
-                    mac 215 {
-                        name hmac-sha1
-                    }
-                    mac 220 {
-                        name hmac-sha1-96
-                    }
-                    mac 225 {
-                        name hmac-md5
-                    }
-                    mac 240 {
-                        name hmac-md5-96
-                    }
-                }
-                client-mac-list-v2 {
-                    mac 200 {
-                        name hmac-sha2-512
-                    }
-                    mac 210 {
-                        name hmac-sha2-256
-                    }
-                    mac 215 {
-                        name hmac-sha1
-                    }
-                    mac 220 {
-                        name hmac-sha1-96
-                    }
-                    mac 225 {
-                        name hmac-md5
-                    }
-                    mac 240 {
-                        name hmac-md5-96
-                    }
-                }
-            }
-            user-params {
-                local-user {
-                    user "admin" {
-                        password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
-                        restricted-to-home false
-                        access {
-                            console true
-                            ftp true
-                            netconf true
-                            grpc true
-                        }
-                        console {
-                            member ["administrative"]
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Log Configuration"
+#--------------------------------------------------
+    log
+        log-id 99 name "99"
+            description "Default  Log"
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "System gRPC Configuration"
+#--------------------------------------------------
+    system
+        grpc
+            allow-unsecure-connection
+            rib-api
+                no shutdown
+            exit
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Oper-Groups (Declarations) Configuration"
+#--------------------------------------------------
+    service
+    exit
+#--------------------------------------------------
+echo "Card Configuration"
+#--------------------------------------------------
+    card 1
+        card-type iom-1
+        mda 1
+            mda-type me12-100gb-qsfp28
+            no shutdown
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Connector Configuration"
+#--------------------------------------------------
+    port 1/1/c1
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c2
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c3
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c4
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c5
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c6
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c7
+        shutdown
+    exit
+    port 1/1/c8
+        shutdown
+    exit
+    port 1/1/c9
+        shutdown
+    exit
+    port 1/1/c10
+        shutdown
+    exit
+    port 1/1/c11
+        shutdown
+    exit
+    port 1/1/c12
+        shutdown
+    exit
+#--------------------------------------------------
+echo "Port Configuration"
+#--------------------------------------------------
+    port 1/1/c1/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/c2/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/c3/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/c4/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/c5/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/c6/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port A/1
+    exit
+    port A/3
+        shutdown
+        ethernet
+        exit
+    exit
+    port A/4
+        shutdown
+    exit
+#--------------------------------------------------
+echo "System Sync-If-Timing Configuration"
+#--------------------------------------------------
+    system
+        sync-if-timing
+            begin
+            commit
+        exit
+    exit
+#--------------------------------------------------
+echo "Management Router Configuration"
+#--------------------------------------------------
+    router management
+    exit
 
-persistent-indices {
-    description "Persistent indices are maintained by the system and must not be modified."
-    vrtr-if-id {
-        router-name "Base" interface-name "to-agg2" vrtr-id 1 if-index 2
-        router-name "Base" interface-name "to-olt1" vrtr-id 1 if-index 4
-    }
-}
+#--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
+        interface "system"
+            address 10.10.10.6/32
+            no shutdown
+        exit
+        interface "to-agg2"
+            address 10.4.6.6/24
+            port 1/1/c3/1:46
+            no shutdown
+        exit
+        interface "to-olt1"
+            address 10.5.6.6/24
+            port 1/1/c2/1:56
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            area 0.0.0.0
+                interface "system"
+                    no shutdown
+                exit
+                interface "to-agg2"
+                    no shutdown
+                exit
+                interface "to-olt1"
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "LDP Configuration"
+#--------------------------------------------------
+        ldp
+            import-pmsi-routes
+            exit
+            tcp-session-parameters
+            exit
+            interface-parameters
+                interface "to-agg2" dual-stack
+                    ipv4
+                        no shutdown
+                    exit
+                    no shutdown
+                exit
+                interface "to-olt1" dual-stack
+                    ipv4
+                        no shutdown
+                    exit
+                    no shutdown
+                exit
+            exit
+            targeted-session
+            exit
+            no shutdown
+        exit
+    exit
 
-# Finished 2025-05-16T16:50:43.7Z
+#--------------------------------------------------
+echo "Service Configuration"
+#--------------------------------------------------
+    service
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+        vpls 20 name "20" customer 1 create
+            stp
+                shutdown
+            exit
+            sap 1/1/c1/1:0 create
+                dhcp
+                    option
+                        action replace
+                        remote-id string "54321"
+                    exit
+                    no shutdown
+                exit
+                dhcp6
+                    ldra
+                        interface-type client-facing
+                        options
+                            interface-id ascii-tuple
+                            remote-id string "54321"
+                        exit
+                        no shutdown
+                    exit
+                exit
+                no shutdown
+            exit
+            sap 1/1/c3/1:20 create
+                no shutdown
+            exit
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Router (Service Side) Configuration"
+#--------------------------------------------------
+    router Base
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Log all events for service vprn, log syslog tls-client-profile Configuration"
+#--------------------------------------------------
+    log
+    exit
+#--------------------------------------------------
+echo "System Configuration Mode Configuration"
+#--------------------------------------------------
+    system
+        management-interface
+            configuration-mode mixed
+        exit
+    exit
+
+exit all
+
+# Finished MON JUN 09 21:12:56 2025 UTC
