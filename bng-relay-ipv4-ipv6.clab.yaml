@@ -13,15 +13,6 @@ topology:
       license: ../license-sros-24.txt
     #    linux:
     #      image: fmiguelalberto/ubuntu-miguel6:latest
-    openwrt:
-      image: vrnetlab/openwrt_openwrt:24.10.1
-      env:
-        USERNAME: root # default: root
-        PASSWORD: mypassword # default: VR-netlab9
-        CLAB_MGMT_PASSTHROUGH: "false" # default: "false"
-        PACKET_REPOSITORY_DNS_SERVER: 8.8.8.8 # default 8.8.8.8
-        PACKET_REPOSITORY_DOMAINS: "example.com" # additional repository domains (space-separated); creates a host route via the MGMT interface
-        PACKAGES: "tinc htop tcpdump btop luci-proto-gre"
     linux:
       image: fmiguelalberto/bngblaster:latest
   nodes:
@@ -108,45 +99,14 @@ topology:
         graph-posX: "485"
         graph-posY: "215"
         graph-groupLabelPos: bottom-center
-    cpe:
-      kind: openwrt
-      ports:
-        - 8080:80
-        - 8443:443
-      env:
-        USERNAME: root # default: root
-        PASSWORD: mypassword # default: VR-netlab9
-        CLAB_MGMT_PASSTHROUGH: "false" # default: "false"
-        PACKET_REPOSITORY_DNS_SERVER: 8.8.8.8 # default 8.8.8.8
-        PACKET_REPOSITORY_DOMAINS: "example.com" # additional repository domains (space-separated); creates a host route via the MGMT interface
-        PACKAGES: "tinc htop tcpdump btop luci-proto-gre" # installed on boot if not already present
-      labels:
-        graph-posX: "365"
-        graph-posY: "165"
-        graph-groupLabelPos: bottom-center
-    sub1:
-      kind: linux
-      labels:
-        graph-posX: "235"
-        graph-posY: "165"
-        graph-groupLabelPos: bottom-center
     host1:
       kind: linux
       ports:
         - 51101:22
-      #      interfaces:
-      #       - name: "eth0"
-      #      - name: "eth1"
-      #     - name: "eth2"
       labels:
         graph-posX: "275"
         graph-posY: "195"
         graph-groupLabelPos: bottom-center
-    #      exec:
-    #        - ip route delete default
-    #        - ifconfig eth1 hw ether 02:42:ac:11:01:01
-    #        - echo "ping to server"
-    #        - ping 100.65.0.1
     host2:
       kind: linux
       ports:
@@ -155,12 +115,7 @@ topology:
         graph-posX: "235"
         graph-posY: "215"
         graph-groupLabelPos: bottom-center
-    #      exec:
-    #        - ip route delete default
-    #        - ifconfig eth1 hw ether 02:42:ac:11:01:02
-    #        - echo "ping to server"
-    #        - ping 100.65.0.1
-    bngblast:
+    host3:
       kind: linux
       labels:
         graph-posX: "365"
@@ -189,6 +144,4 @@ topology:
     - endpoints: [ "bng1:eth3", "dhcp-server:eth1" ]
     - endpoints: [ "bng2:eth3", "dhcp-server:eth2" ]
     - endpoints: [ "bng1:eth5", "gnmic:eth1" ]
-    - endpoints: [ "olt1:eth4", "cpe:eth1" ]
-    - endpoints: [ "cpe:eth2", "sub1:eth1" ]
-    - endpoints: [ "olt1:eth5", "bngblast:eth1" ]
+    - endpoints: [ "olt1:eth5", "host3:eth1" ]
